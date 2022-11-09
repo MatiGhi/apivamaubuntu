@@ -1,0 +1,32 @@
+const { sequelize } = require("../DB/connection");
+const { DataTypes } = require ("sequelize");
+
+const Group = sequelize.define("groups",
+    {
+        id_group:{
+            primaryKey: true,
+            autoIncrement:true,
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        name:{
+            type: DataTypes.STRING,
+            allowNull: true,
+            max: 100,
+            defaultValue: null
+        },
+        deleted_at: {
+            type: DataTypes.DATE,
+            allowNull: true,
+            defaultValue: null
+        }
+    },
+    {
+        freezeTableName: true,
+        timestamps: true,
+    }
+);
+
+module.exports = {
+    Group
+}
